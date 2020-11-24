@@ -14,10 +14,11 @@ export default function Home({org}) {
 export const getStaticProps = async () => {
 	const response = await fetch("https://api.github.com/orgs/rocketseat");
   const data = await response.json();
-  console.log(data.login)
+ 
 	return {
 		props: {
 			org: data,
 		},
+		revalidate:10,
 	};
 };
